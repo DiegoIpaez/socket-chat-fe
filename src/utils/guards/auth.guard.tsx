@@ -1,7 +1,7 @@
-import { useSelector } from "react-redux";
-import { Navigate, Outlet } from "react-router-dom";
-import { type AppStore } from "../redux/store";
-import { PUBLIC_ROUTE_PATHS } from "../constants";
+import { useSelector } from 'react-redux';
+import { Navigate, Outlet } from 'react-router-dom';
+import { type AppStore } from '../../redux/store';
+import { PUBLIC_ROUTE_PATHS } from '../constants';
 
 const AuthGuard = () => {
   const userState = useSelector((store: AppStore) => store.user);

@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import io from 'socket.io-client';
-import { API_HOST } from '../constants';
+import { API_HOST } from './constants';
 
 const baseURL = API_HOST;
 
