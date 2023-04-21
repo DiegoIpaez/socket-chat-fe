@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getLocalStorage, removeAllLocalStorage } from './localStorage.utility';
 import { removeAllSessionStorage } from './sessionStorage.utility';
-import { API_URL } from '../constants';
+import { API_URL } from './constants';
 
 const defaultOptions = {
   baseURL: API_URL,

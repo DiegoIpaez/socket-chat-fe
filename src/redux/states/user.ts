@@ -4,7 +4,7 @@ import {
   removeLocalStorage,
   setLocalStorage,
 } from '../../utils/localStorage.utility';
-import { LOCAL_STORAGE_KEYS } from '../../constants';
+import { LOCAL_STORAGE_KEYS } from '../../utils/constants';
 
 const { TOKEN_KEY, USER_KEY } = LOCAL_STORAGE_KEYS;
 

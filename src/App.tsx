@@ -1,29 +1,30 @@
-import { Provider } from "react-redux";
-import { Suspense, lazy, useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import store from "./redux/store";
-import AuthGuard from "./guards/auth.guard";
-import Loading from "./components/Loading/Loading";
-import { ROUTE_PATHS } from "./constants";
-import { getSocket } from "./utils/socket.utility";
+import { Provider } from 'react-redux';
+import { Suspense, lazy, useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import store from './redux/store';
+import AuthGuard from './utils/guards/auth.guard';
+import Loading from './components/Loading/Loading';
+import { ROUTE_PATHS } from './utils/constants';
+import { getSocket } from './utils/socket.utility';
 
-const Home = lazy(() => import("./pages/Home/Home"));
-const Chat = lazy(() => import("./pages/Chat/Chat"));
+const Home = lazy(() => import('./pages/Home/Home'));
+const Chat = lazy(() => import('./pages/Chat/Chat'));
 
 const App = () => {
   const [socket] = useState(getSocket());
   const [online, setOnline] = useState<boolean | null>(null);
 
   useEffect(() => {
-    socket.on("connect", () => setOnline(true));
+    socket.on('connect', () => setOnline(true));
   }, [socket]);
   useEffect(() => {
-    socket.on("disconnect", () => setOnline(false));
+    socket.on('disconnect', () => setOnline(false));
   }, [socket]);
 
   useEffect(() => {
     // if (online === true) alert("connect to socket!.");
-    if (online === false) alert("disconnect to socket.");
+    // eslint-disable-next-line no-alert
+    if (online === false) alert('disconnect to socket.');
   }, [online]);
 
   return (
