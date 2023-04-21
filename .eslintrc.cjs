@@ -25,6 +25,7 @@ module.exports = {
     indent: ['error', 2],
     'no-multi-spaces': ['error'],
     'linebreak-style': 'off',
+    'import/prefer-default-export': 'off',
     'object-curly-newline': ['error', { multiline: true, consistent: true }],
     'react/function-component-definition': [
       'error',

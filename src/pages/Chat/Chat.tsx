@@ -1,6 +1,6 @@
-import { useDispatch } from "react-redux";
-import { resetUser } from "../../redux/states/user";
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { resetUser } from '../../redux/states/user';
 
 const Chat = () => {
   const dispatch = useDispatch();
@@ -8,14 +8,16 @@ const Chat = () => {
 
   const logOut = () => {
     dispatch(resetUser());
-    navigate("/");
+    navigate('/');
   };
 
   return (
     <div>
       <h1>Chat</h1>
       <br />
-      <button onClick={() => logOut()}>logout</button>
+      <button type="button" onClick={() => logOut()}>
+        logout
+      </button>
     </div>
   );
 };

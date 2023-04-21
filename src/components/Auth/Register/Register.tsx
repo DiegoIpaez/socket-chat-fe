@@ -1,13 +1,14 @@
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { createUser } from "../../../redux/states/user";
-import { setLocalStorage } from "../../../utils/localStorage.utility";
-import axios from "../../../utils/clientAxios.utility";
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { createUser } from '../../../redux/states/user';
+import { setLocalStorage } from '../../../utils/localStorage.utility';
+import axios from '../../../utils/clientAxios.utility';
 
 export const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const formData = e.currentTarget.elements;
@@ -15,15 +16,15 @@ export const Register = () => {
     const email = formData[1].value;
     const password = formData[2].value;
 
-    const { data } = await axios.post("/auth/register", {
+    const { data } = await axios.post('/auth/register', {
       email,
       username,
       password,
     });
     const { createdAt, updatedAt, deleted, ...userLogged } = data.data.user;
     dispatch(createUser(userLogged));
-    setLocalStorage("token", data.data.token);
-    navigate("/chat");
+    setLocalStorage('token', data.data.token);
+    navigate('/chat');
   };
   return (
     <div>
@@ -37,7 +38,7 @@ export const Register = () => {
         <br />
         <input type="password" placeholder="********" />
         <br />
-        <button>Register</button>
+        <button type="submit">Register</button>
       </form>
     </div>
   );
