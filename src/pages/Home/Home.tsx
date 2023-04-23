@@ -1,5 +1,5 @@
 import { Row, Col } from 'antd';
-import { Navbar } from './Navbar/Navbar';
+import { Navbar } from '../../components/Navbar/Navbar';
 import styles from './home.module.css';
 
 const Home = () => {
