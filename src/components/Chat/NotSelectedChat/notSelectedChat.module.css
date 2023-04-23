@@ -1,0 +1,7 @@
+.middleScreen {
+  position: absolute;
+  top: 40%;
+  right: 0;
+  width: 60%;
+  text-align: center;
+}
