@@ -16,16 +16,17 @@ import styles from '../auth.module.css';
 import axios from '../../../utils/clientAxios.utility';
 import { createUser } from '../../../redux/states/user';
 import { setLocalStorage } from '../../../utils/localStorage.utility';
+import { USUAL_MESSAGES } from '../../../utils/constants';
 
 interface Props {
-  openModal: boolean,
-  closeModal: () => void,
+  openModal: boolean;
+  closeModal: () => void;
 }
 
 export const Login = ({ closeModal, openModal }: Props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const msg = 'Ocurrió un error al intentar iniciar sesión, correo y/o contraseña invalidos.';
+
   const [loading, setLoading] = useState(false);
 
   const loginUser = async (formData: FormInstance) => {
@@ -37,9 +38,10 @@ export const Login = ({ closeModal, openModal }: Props) => {
       const { createdAt, updatedAt, deleted, ...userLogged } = data.data.user;
       dispatch(createUser(userLogged));
       setLocalStorage('token', data.data.token);
+      message.success(USUAL_MESSAGES.LOGIN_SUCCESS);
       navigate('/chat');
     } catch (error: Error | unknown) {
-      message.warning(msg);
+      message.warning(USUAL_MESSAGES.LOGIN_ERROR);
     } finally {
       setLoading(false);
     }
@@ -63,10 +65,16 @@ export const Login = ({ closeModal, openModal }: Props) => {
         <Col xs={24} sm={12} className={styles.authForm}>
           <h2>Iniciar sesión</h2>
           <Form onFinish={(e) => loginUser(e)}>
-            <Form.Item name="email">
+            <Form.Item
+              name="email"
+              rules={[{ type: 'email', message: 'Ingrese un email valido' }]}
+            >
               <Input name="email" placeholder="user@mail.com" />
             </Form.Item>
-            <Form.Item name="password">
+            <Form.Item
+              name="password"
+              rules={[{ min: 6, message: 'Debe ingresar mas 6 digitos o mas' }]}
+            >
               <Input.Password
                 placeholder="password"
                 iconRender={
