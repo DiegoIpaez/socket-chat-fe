@@ -21,9 +21,10 @@ import { USUAL_MESSAGES } from '../../../utils/constants';
 interface Props {
   openModal: boolean;
   closeModal: () => void;
+  goToLogin: () => void;
 }
 
-export const Register = ({ closeModal, openModal }: Props) => {
+export const Register = ({ closeModal, openModal, goToLogin }: Props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -88,6 +89,14 @@ export const Register = ({ closeModal, openModal }: Props) => {
                 }
               />
             </Form.Item>
+            <Row justify="center">
+              <Button
+                type="link"
+                onClick={() => goToLogin()}
+              >
+                ¿Ya tienes cuenta?, ir a iniciar sesión.
+              </Button>
+            </Row>
             <Row justify="center">
               <Button
                 className={styles.button}

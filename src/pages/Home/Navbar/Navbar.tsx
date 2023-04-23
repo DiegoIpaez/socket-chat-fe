@@ -9,6 +9,10 @@ export const Navbar = () => {
 
   const closeLoginModal = () => setOpenLogin(false);
   const closeRegisterModal = () => setOpenRegister(false);
+  const openLoginFromRegister = () => {
+    closeRegisterModal();
+    setOpenLogin(true);
+  };
 
   return (
     <>
@@ -27,17 +31,29 @@ export const Navbar = () => {
             <Button type="text" className={styles.link}>
               Centro de ayuda
             </Button>
-            <Button type="text" onClick={() => setOpenRegister(true)} className={styles.link}>
+            <Button
+              type="text"
+              onClick={() => setOpenRegister(true)}
+              className={styles.link}
+            >
               Registro
             </Button>
-            <Button type="primary" onClick={() => setOpenLogin(true)} className={styles.chatLink}>
+            <Button
+              type="primary"
+              onClick={() => setOpenLogin(true)}
+              className={styles.chatLink}
+            >
               Iniciar
             </Button>
           </Space>
         </Col>
       </Row>
       <Login closeModal={closeLoginModal} openModal={openLogin} />
-      <Register closeModal={closeRegisterModal} openModal={openRegister} />
+      <Register
+        goToLogin={openLoginFromRegister}
+        closeModal={closeRegisterModal}
+        openModal={openRegister}
+      />
     </>
   );
 };

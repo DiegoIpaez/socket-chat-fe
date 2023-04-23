@@ -82,7 +82,11 @@ export const Login = ({ closeModal, openModal }: Props) => {
                 }
               />
             </Form.Item>
-            <p>¿Olvidaste tu contraseña?</p>
+            <Row justify="center">
+              <Button type="link">
+                ¿Olvidaste tu contraseña?
+              </Button>
+            </Row>
             <Row justify="center">
               <Button
                 className={styles.button}
