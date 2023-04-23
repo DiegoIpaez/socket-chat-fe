@@ -7,3 +7,10 @@ body {
   background-color: #242424;
 }
 
+.auth-modal .ant-modal-body .ant-row {
+  margin: 0px !important;
+}
+.auth-modal .ant-modal-content {
+  background-color: #efefef;
+  padding: 0px;
+}
