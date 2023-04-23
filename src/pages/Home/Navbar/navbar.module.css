@@ -1,0 +1,58 @@
+.navbar {
+  background-color: #075e54;
+  height: 80px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 2rem;
+  padding: 0px 1rem;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  margin: 0px;
+}
+.logo {
+  height: 50px;
+  width: 50px;
+}
+
+.link {
+  color: #fafafa;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.chatLink {
+  background-color: #128c7e;
+  border-color: #128c7e;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 0 40px;
+}
+
+.navbar .link,
+.navbar .chatLink {
+  position: relative;
+}
+
+.navbar .link::before,
+.navbar .chatLink::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #128c7e;
+  transition: width 0.3s ease-out;
+}
+
+.navbar .link:hover::before {
+  width: 100%;
+}
+
+.navbar .chatLink:hover {
+  transition: all ease 0.4s;
+  background-color: #eeeeee;
+  color: #075e54;
+}

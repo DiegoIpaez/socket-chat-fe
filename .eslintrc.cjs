@@ -27,6 +27,7 @@ module.exports = {
     'linebreak-style': 'off',
     'import/prefer-default-export': 'off',
     'object-curly-newline': ['error', { multiline: true, consistent: true }],
+    'react/no-unstable-nested-components': ['error', { allowAsProps: true }],
     'react/function-component-definition': [
       'error',
       {

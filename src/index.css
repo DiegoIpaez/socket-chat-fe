@@ -7,9 +7,10 @@ body {
   background-color: #242424;
 }
 
-.loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+.auth-modal .ant-modal-body .ant-row {
+  margin: 0px !important;
+}
+.auth-modal .ant-modal-content {
+  background-color: #efefef;
+  padding: 0px;
 }
