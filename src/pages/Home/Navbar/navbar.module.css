@@ -47,7 +47,12 @@
   transition: width 0.3s ease-out;
 }
 
-.navbar .link:hover::before,
-.navbar .chatLink:hover::before {
+.navbar .link:hover::before {
   width: 100%;
+}
+
+.navbar .chatLink:hover {
+  transition: all ease 0.4s;
+  background-color: #eeeeee;
+  color: #075e54;
 }

@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Row, Col, Space, Button } from 'antd';
 import styles from './navbar.module.css';
-import { Login } from '../../../components/Auth';
+import { Login, Register } from '../../../components/Auth';
 
 export const Navbar = () => {
   const [openLogin, setOpenLogin] = useState(false);
+  const [openRegister, setOpenRegister] = useState(false);
 
   const closeLoginModal = () => setOpenLogin(false);
+  const closeRegisterModal = () => setOpenRegister(false);
 
   return (
     <>
@@ -25,7 +27,7 @@ export const Navbar = () => {
             <Button type="text" className={styles.link}>
               Centro de ayuda
             </Button>
-            <Button type="text" className={styles.link}>
+            <Button type="text" onClick={() => setOpenRegister(true)} className={styles.link}>
               Registro
             </Button>
             <Button type="primary" onClick={() => setOpenLogin(true)} className={styles.chatLink}>
@@ -35,6 +37,7 @@ export const Navbar = () => {
         </Col>
       </Row>
       <Login closeModal={closeLoginModal} openModal={openLogin} />
+      <Register closeModal={closeRegisterModal} openModal={openRegister} />
     </>
   );
 };

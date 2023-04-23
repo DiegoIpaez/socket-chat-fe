@@ -1,45 +1,105 @@
+import {
+  Modal,
+  Form,
+  Button,
+  Input,
+  Row,
+  Col,
+  message,
+  type FormInstance,
+} from 'antd';
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import styles from '../auth.module.css';
+import axios from '../../../utils/clientAxios.utility';
 import { createUser } from '../../../redux/states/user';
 import { setLocalStorage } from '../../../utils/localStorage.utility';
-import axios from '../../../utils/clientAxios.utility';
+import { USUAL_MESSAGES } from '../../../utils/constants';
 
-export const Register = () => {
+interface Props {
+  openModal: boolean;
+  closeModal: () => void;
+}
+
+export const Register = ({ closeModal, openModal }: Props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    const formData = e.currentTarget.elements;
-    const username = formData[0].value;
-    const email = formData[1].value;
-    const password = formData[2].value;
+  const [loading, setLoading] = useState(false);
 
-    const { data } = await axios.post('/auth/register', {
-      email,
-      username,
-      password,
-    });
-    const { createdAt, updatedAt, deleted, ...userLogged } = data.data.user;
-    dispatch(createUser(userLogged));
-    setLocalStorage('token', data.data.token);
-    navigate('/chat');
+  const registerUser = async (formData: FormInstance) => {
+    try {
+      setLoading(true);
+      const { data } = await axios.post('/auth/register', {
+        ...formData,
+      });
+      const { createdAt, updatedAt, deleted, ...userLogged } = data.data.user;
+      dispatch(createUser(userLogged));
+      setLocalStorage('token', data.data.token);
+      message.success(USUAL_MESSAGES.LOGIN_SUCCESS);
+      navigate('/chat');
+    } catch (error: Error | unknown) {
+      message.warning(USUAL_MESSAGES.REGISTER_ERROR);
+    } finally {
+      setLoading(false);
+    }
   };
+
   return (
-    <div>
-      <h1>REGISTRO</h1>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <input type="text" placeholder="test" />
-        <br />
-        <br />
-        <input type="email" placeholder="user@mail.com" />
-        <br />
-        <br />
-        <input type="password" placeholder="********" />
-        <br />
-        <button type="submit">Register</button>
-      </form>
-    </div>
+    <Modal
+      className="auth-modal"
+      width={900}
+      open={openModal}
+      onCancel={closeModal}
+      footer={false}
+    >
+      <Row gutter={100}>
+        <Col xs={24} sm={12} className={styles.authImg}>
+          <img
+            src="https://blog.index.pe/wp-content/uploads/2020/03/chat-720x320@2x.jpeg"
+            alt=""
+          />
+        </Col>
+        <Col xs={24} sm={12} className={styles.authForm}>
+          <h2>Unirse</h2>
+          <Form onFinish={(e) => registerUser(e)}>
+            <Form.Item
+              name="username"
+              rules={[{ required: true, message: USUAL_MESSAGES.REQUIRED_FIELD }]}
+            >
+              <Input name="username" placeholder="Juan Perez" />
+            </Form.Item>
+            <Form.Item
+              name="email"
+              rules={[{ type: 'email', message: 'Ingrese un email valido' }]}
+            >
+              <Input name="email" placeholder="user@mail.com" />
+            </Form.Item>
+            <Form.Item
+              name="password"
+              rules={[{ min: 6, message: 'Debe ingresar mas 6 digitos o mas' }]}
+            >
+              <Input.Password
+                placeholder="password"
+                iconRender={
+                  (visible: boolean) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)
+                }
+              />
+            </Form.Item>
+            <Row justify="center">
+              <Button
+                className={styles.button}
+                htmlType="submit"
+                loading={loading}
+              >
+                Crear cuenta
+              </Button>
+            </Row>
+          </Form>
+        </Col>
+      </Row>
+    </Modal>
   );
 };

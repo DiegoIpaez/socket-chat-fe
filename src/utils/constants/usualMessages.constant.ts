@@ -8,4 +8,5 @@ export const USUAL_MESSAGES = {
   REQUIRED_FIELD: 'Este campo es requerido',
   INVALID_INPUT: 'Verifique los campos por favor',
   LOAD_DATA_ERROR: 'Error al cargar los datos',
+  REGISTER_ERROR: 'Hubo un error a la hora de crear su usuario, intentelo de nuevo',
 };
