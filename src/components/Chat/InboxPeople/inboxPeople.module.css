@@ -1,0 +1,71 @@
+.inboxPeopleContainer {
+  background: #303030 none repeat scroll 0 0;
+  float: left;
+  overflow: hidden;
+  width: 40%;
+}
+
+.inboxPeopleNav {
+  display: flex;
+  background-color: #128c7e;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  padding: 10px 10px 10px 10px;
+  overflow: hidden;
+}
+
+.recentHeading h4 {
+  color: white;
+  font-size: 18px;
+  margin: auto;
+}
+
+/* Sidebar */
+.inboxChat {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+.extraSpace {
+  height: 150px;
+}
+
+.chatList {
+  border-bottom: 1px solid #b9b9b981;
+  cursor: pointer;
+  margin: 0;
+  padding: 0.8rem 1rem;
+}
+.chatPeople {
+  overflow: hidden;
+  clear: both;
+}
+
+.chatImg {
+  float: left;
+  width: 11%;
+}
+
+.chatib {
+  float: left;
+  padding: 0 0 0 15px;
+  width: 88%;
+}
+.chatib h5 {
+  font-size: 15px;
+  margin-bottom: 0;
+  margin-top: 6px;
+}
+.chatib h5 span {
+  color: #464646;
+  float: right;
+}
+.chatib span {
+  font-size: 12px;
+}
+.chatib p {
+  font-size: 14px;
+  color: #989898;
+  margin: auto;
+}
