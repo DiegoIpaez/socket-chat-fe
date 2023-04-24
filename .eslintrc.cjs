@@ -10,7 +10,14 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
   ],
-  overrides: [],
+  overrides: [
+    {
+      files: ['*.tsx'],
+      rules: {
+        'arrow-body-style': 'off',
+      },
+    },
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',

@@ -1,14 +1,19 @@
+import { Row, Col, Button, Form, Input } from 'antd';
+import styles from '../message.module.css';
+
 export const SendMessage = () => (
-  <form>
-    <div className="type_msg row">
-      <div className="input_msg_write col-sm-9">
-        <input type="text" className="write_msg" placeholder="Mensaje..." />
-      </div>
-      <div className="col-sm-3 text-center">
-        <button className="msg_send_btn mt-3" type="submit">
+  <Form className={styles.sendMsgContainer}>
+    <Row className={styles.typeMsg} justify="space-between">
+      <Col className={styles.inputMsgWrite} md={20} sm={18}>
+        <Form.Item name="message">
+          <Input type="text" placeholder="Mensaje..." />
+        </Form.Item>
+      </Col>
+      <Col>
+        <Button className={styles.msgSendBtn} htmlType="submit">
           enviar
-        </button>
-      </div>
-    </div>
-  </form>
+        </Button>
+      </Col>
+    </Row>
+  </Form>
 );

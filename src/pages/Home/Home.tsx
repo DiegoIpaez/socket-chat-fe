@@ -3,7 +3,6 @@ import { Navbar } from '../../components/Navbar/Navbar';
 import styles from './home.module.css';
 
 const Home = () => {
-  const hi = 'hello word';
   return (
     <>
       <Navbar />

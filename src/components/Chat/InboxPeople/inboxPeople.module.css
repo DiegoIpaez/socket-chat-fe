@@ -46,6 +46,9 @@
   float: left;
   width: 11%;
 }
+.chatImg img {
+  max-width: 100%;
+}
 
 .chatib {
   float: left;
