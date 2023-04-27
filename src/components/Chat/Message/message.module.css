@@ -8,6 +8,13 @@
   height: 90%;
   overflow-y: auto;
 }
+.msgHistory::-webkit-scrollbar {
+  width: 5px;
+}
+.msgHistory::-webkit-scrollbar-thumb {
+  background-color:  #8888882c;
+  border-radius: 7px;
+}
 
 .incomingMsgImg {
   display: inline-block;

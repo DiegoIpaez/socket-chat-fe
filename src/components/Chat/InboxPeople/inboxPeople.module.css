@@ -27,6 +27,13 @@
   overflow-y: scroll;
   scroll-behavior: smooth;
 }
+.inboxChat::-webkit-scrollbar {
+  width: 5px;
+}
+.inboxChat::-webkit-scrollbar-thumb {
+  background-color:  #88888862;
+  border-radius: 7px;
+}
 .extraSpace {
   height: 150px;
 }
