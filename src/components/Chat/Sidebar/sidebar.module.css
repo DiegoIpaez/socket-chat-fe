@@ -3,6 +3,14 @@
   overflow-y: scroll;
   scroll-behavior: smooth;
 }
+
+.activeChat {
+  background: #525151;
+}
+.activeChat:hover {
+  background: #525151 !important;
+}
+
 .inboxChat::-webkit-scrollbar {
   width: 5px;
 }
@@ -15,10 +23,13 @@
 }
 
 .chatList {
-  border-bottom: 1px solid #b9b9b981;
+  border-bottom: 1px solid #525151;
   cursor: pointer;
   margin: 0;
   padding: 0.8rem 1rem;
+}
+.chatList:hover {
+  background: #414141;
 }
 .chatPeople {
   overflow: hidden;
