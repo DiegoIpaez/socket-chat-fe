@@ -1,7 +1,8 @@
 .msgContainer {
+  flex-basis: 65%;
+  flex-grow: 1;
   width: 100%;
   height: 100vh;
-  padding-top: 30px;
 }
 .msgHistory {
   padding: 0px 15px 0 15px;
@@ -101,4 +102,15 @@
   background: #ffffff none repeat scroll 0 0 !important;
   color: #128c7e !important;
   border-color: #128c7e !important;
+}
+
+.incomingMsg{
+  margin: 26px 0px;
+}
+
+.loadMessages {
+  position: absolute;
+  bottom: 50%;
+  right: 0;
+  width: 65%;
 }

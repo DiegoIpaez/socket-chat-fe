@@ -1,3 +1,4 @@
+import { Spin } from 'antd';
 import { Socket } from 'socket.io-client';
 import { useEffect, useState } from 'react';
 import { IncomingMessage, OutgoingMessage, SendMessage } from './components';
@@ -13,10 +14,12 @@ interface Props {
 
 export const Messages = ({ socket, recipientId, uid }: Props) => {
   const [personalMessages, setPersonalMessages] = useState<Array<IMessage>>([]);
+  const [loadignMessage, setLoadignMessage] = useState(false);
 
   useEffect(() => {
     const getHistoricMsgs = async () => {
       try {
+        setLoadignMessage(true);
         setPersonalMessages([]);
         const { data } = await axios.get('/message/last-chat', {
           params: {
@@ -27,6 +30,8 @@ export const Messages = ({ socket, recipientId, uid }: Props) => {
         setPersonalMessages(data.data.messages);
       } catch (error) {
         setPersonalMessages([]);
+      } finally {
+        setLoadignMessage(false);
       }
     };
     if (recipientId) {
@@ -54,14 +59,21 @@ export const Messages = ({ socket, recipientId, uid }: Props) => {
 
   return (
     <div className={styles.msgContainer}>
+      <Spin
+        spinning={loadignMessage}
+        tip="Cargando..."
+        size="large"
+        className={styles.loadMessages}
+      />
       <div className={styles.msgHistory}>
-        {personalMessages.map((msg) => (msg.to === uid ? (
-          // eslint-disable-next-line no-underscore-dangle
-          <IncomingMessage key={msg?._id} message={msg} />
-        ) : (
-          // eslint-disable-next-line no-underscore-dangle
-          <OutgoingMessage key={msg?._id} message={msg} />
-        )))}
+        {personalMessages.length > 0
+        && personalMessages.map(
+          ({ _id: msgId, ...msg }) => (msg.to === uid ? (
+            <IncomingMessage key={msgId} message={msg} />
+          ) : (
+            <OutgoingMessage key={msgId} message={msg} />
+          )),
+        )}
       </div>
       <SendMessage sendPersonalMessage={sendPersonalMessage} />
     </div>

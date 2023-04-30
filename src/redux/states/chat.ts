@@ -10,9 +10,10 @@ export const chatSlice = createSlice({
   initialState: INITIAL_USER_STATE,
   reducers: {
     createChat: (_state, action) => action.payload,
+    resetChat: () => INITIAL_USER_STATE,
   },
 });
 
-export const { createChat } = chatSlice.actions;
+export const { createChat, resetChat } = chatSlice.actions;
 
 export default chatSlice.reducer;

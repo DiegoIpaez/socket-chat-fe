@@ -7,7 +7,7 @@ interface Props {
 }
 
 export const IncomingMessage = ({ message }: Props) => (
-  <div className="incoming_msg">
+  <div className={styles.incomingMsg}>
     <div className={styles.incomingMsgImg}>
       <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" />
     </div>

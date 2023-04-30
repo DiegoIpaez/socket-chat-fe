@@ -1,14 +1,13 @@
 .chatContainer {
-  clear: both;
+  display: flex;
   overflow: hidden;
   height: 100vh;
 }
 
 .inboxPeopleContainer {
   background: #303030 none repeat scroll 0 0;
-  float: left;
-  overflow: hidden;
-  width: 40%;
+  flex-basis: 35%;
+  flex-grow: 0;
 }
 
 .inboxPeopleNav {

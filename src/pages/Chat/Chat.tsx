@@ -11,6 +11,7 @@ import { NotSelectedChat, Messages } from '../../components/Chat';
 import type { IUser } from '../../interfaces';
 import Sidebar from '../../components/Chat/Sidebar/Sidebar';
 import { AppStore } from '../../redux/store';
+import { resetChat } from '../../redux/states/chat';
 
 const Chat = () => {
   const user = getLocalStorage('user');
@@ -53,6 +54,7 @@ const Chat = () => {
       socket.current.emit('offline');
     }
     dispatch(resetUser());
+    dispatch(resetChat());
     navigate('/');
   };
 
