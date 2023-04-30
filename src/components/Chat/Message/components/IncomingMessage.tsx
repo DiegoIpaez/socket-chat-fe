@@ -1,14 +1,30 @@
 import styles from '../message.module.css';
+import { IMessage } from '../../../../interfaces';
+import { LOCALE_DATE } from '../../../../utils/constants';
 
-export const IncomingMessage = () => (
+interface Props {
+  message: IMessage;
+}
+
+export const IncomingMessage = ({ message }: Props) => (
   <div className="incoming_msg">
     <div className={styles.incomingMsgImg}>
       <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" />
     </div>
     <div className={styles.receivedMsg}>
       <div className={styles.receivedWithMsg}>
-        <p>Test which is a new approach to have all solutions</p>
-        <span className={styles.timeDate}> 11:01 AM | June 9</span>
+        <p>{message.message}</p>
+        <span className={styles.timeDate}>
+          {message?.createdAt
+            && `${new Date(message?.createdAt)?.toLocaleTimeString(LOCALE_DATE, {
+              hour12: false,
+              hour: '2-digit',
+              minute: '2-digit',
+            })} | ${new Date(message?.createdAt)?.toLocaleDateString(LOCALE_DATE, {
+              month: 'long',
+              day: 'numeric',
+            })}`}
+        </span>
       </div>
     </div>
   </div>

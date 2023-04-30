@@ -8,11 +8,12 @@ import { resetUser } from '../../redux/states/user';
 import { getSocket } from '../../utils/socket.utility';
 import { getLocalStorage } from '../../utils/localStorage.utility';
 import { NotSelectedChat, Messages } from '../../components/Chat';
-import { type IUser } from '../../interfaces';
+import type { IUser } from '../../interfaces';
 import Sidebar from '../../components/Chat/Sidebar/Sidebar';
 import { AppStore } from '../../redux/store';
 
 const Chat = () => {
+  const user = getLocalStorage('user');
   const token = getLocalStorage('token');
 
   const socket = useRef<Socket | null>();
@@ -33,7 +34,6 @@ const Chat = () => {
 
   useEffect(() => {
     if (socket?.current) {
-      const user = getLocalStorage('user');
       socket?.current?.on('user-list', (data) => {
         if (!data?.users) {
           setUsers([]);
@@ -46,7 +46,7 @@ const Chat = () => {
         }
       });
     }
-  }, [socket]);
+  }, [socket, user]);
 
   const logOut = () => {
     if (socket.current) {
@@ -72,7 +72,7 @@ const Chat = () => {
         <Sidebar users={users} loadingUsers={loadingUsers} />
       </div>
       {chatState.activeChat && chatState.recipientId ? (
-        <Messages />
+        <Messages socket={socket} uid={user.uid} recipientId={chatState.recipientId} />
       ) : (
         <NotSelectedChat />
       )}

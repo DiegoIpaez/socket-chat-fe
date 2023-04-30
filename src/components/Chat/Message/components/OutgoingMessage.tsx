@@ -1,10 +1,28 @@
 import styles from '../message.module.css';
+import { IMessage } from '../../../../interfaces';
+import { LOCALE_DATE } from '../../../../utils/constants';
 
-export const OutgoingMessage = () => (
-  <div className={styles.outgoingMsg}>
-    <div className={styles.sendMsg}>
-      <p>Test which is a new approach to have all solutions</p>
-      <span className={styles.timeDate}> 11:01 AM | June 9</span>
+interface Props {
+  message: IMessage;
+}
+
+export const OutgoingMessage = ({ message }: Props) => {
+  return (
+    <div className={styles.outgoingMsg}>
+      <div className={styles.sendMsg}>
+        <p>{message.message}</p>
+        <span className={styles.timeDate}>
+          {message?.createdAt
+            && `${new Date(message?.createdAt)?.toLocaleTimeString(LOCALE_DATE, {
+              hour12: false,
+              hour: '2-digit',
+              minute: '2-digit',
+            })} | ${new Date(message?.createdAt)?.toLocaleDateString(LOCALE_DATE, {
+              month: 'long',
+              day: 'numeric',
+            })}`}
+        </span>
+      </div>
     </div>
-  </div>
-);
+  );
+};
