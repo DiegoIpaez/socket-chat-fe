@@ -1,6 +1,6 @@
 import { Spin } from 'antd';
 import { Socket } from 'socket.io-client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { IncomingMessage, OutgoingMessage, SendMessage } from './components';
 import styles from './message.module.css';
 import { IMessage } from '../../../interfaces';
@@ -13,8 +13,21 @@ interface Props {
 }
 
 export const Messages = ({ socket, recipientId, uid }: Props) => {
+  const msgHistoryRef = useRef<HTMLDivElement>(null);
   const [personalMessages, setPersonalMessages] = useState<Array<IMessage>>([]);
   const [loadignMessage, setLoadignMessage] = useState(false);
+
+  const scrollToButtom = (timeOut = 0) => {
+    const element: HTMLDivElement | null = msgHistoryRef.current;
+    setTimeout(() => {
+      if (element) {
+        element.scrollTo({
+          top: element.scrollHeight,
+          behavior: 'smooth',
+        });
+      }
+    }, timeOut);
+  };
 
   useEffect(() => {
     const getHistoricMsgs = async () => {
@@ -38,6 +51,10 @@ export const Messages = ({ socket, recipientId, uid }: Props) => {
       getHistoricMsgs();
     }
   }, [recipientId, uid]);
+
+  useEffect(() => {
+    scrollToButtom();
+  }, [personalMessages]);
 
   useEffect(() => {
     if (socket?.current) {
@@ -65,7 +82,7 @@ export const Messages = ({ socket, recipientId, uid }: Props) => {
         size="large"
         className={styles.loadMessages}
       />
-      <div className={styles.msgHistory}>
+      <div className={styles.msgHistory} ref={msgHistoryRef}>
         {personalMessages.length > 0
         && personalMessages.map(
           ({ _id: msgId, ...msg }) => (msg.to === uid ? (
