@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Row, Col, Space, Button } from 'antd';
 import styles from './navbar.module.css';
-import { Login, Register } from '../../../components/Auth';
+import { Login, Register } from '../Auth';
 
 export const Navbar = () => {
   const [openLogin, setOpenLogin] = useState(false);

@@ -7,10 +7,24 @@ body {
   background-color: #242424;
 }
 
+.ant-spin-dot .ant-spin-dot-item {
+  background-color: #075e54;
+}
+.ant-spin-text {
+  color: #075e54;
+}
+
 .auth-modal .ant-modal-body .ant-row {
   margin: 0px !important;
 }
 .auth-modal .ant-modal-content {
   background-color: #efefef;
   padding: 0px;
+}
+
+.text-success {
+  color: green;
+}
+.text-danger {
+  color: rgb(163, 0, 0);
 }

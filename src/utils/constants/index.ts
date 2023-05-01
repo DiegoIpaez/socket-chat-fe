@@ -10,3 +10,5 @@ export const LOCAL_STORAGE_KEYS = {
   TOKEN_KEY: 'token',
   USER_KEY: 'user',
 };
+
+export const LOCALE_DATE = 'en-US';

@@ -1,0 +1,68 @@
+.inboxChat {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.activeChat {
+  background: #525151;
+}
+.activeChat:hover {
+  background: #525151 !important;
+}
+
+.inboxChat::-webkit-scrollbar {
+  width: 5px;
+}
+.inboxChat::-webkit-scrollbar-thumb {
+  background-color:  #88888862;
+  border-radius: 7px;
+}
+.extraSpace {
+  height: 150px;
+}
+
+.chatList {
+  border-bottom: 1px solid #525151;
+  cursor: pointer;
+  margin: 0;
+  padding: 0.8rem 1rem;
+}
+.chatList:hover {
+  background: #414141;
+}
+.chatPeople {
+  overflow: hidden;
+  clear: both;
+}
+
+.chatImg {
+  float: left;
+  width: 11%;
+}
+.chatImg img {
+  max-width: 100%;
+}
+
+.chatib {
+  float: left;
+  padding: 0 0 0 15px;
+  width: 88%;
+}
+.chatib h5 {
+  font-size: 15px;
+  margin-bottom: 0;
+  margin-top: 6px;
+}
+.chatib h5 span {
+  color: #464646;
+  float: right;
+}
+.chatib span {
+  font-size: 12px;
+}
+.chatib p {
+  font-size: 14px;
+  color: #989898;
+  margin: auto;
+}
