@@ -1,10 +1,12 @@
-import { Spin } from 'antd';
+import { Spin, message } from 'antd';
 import { Socket } from 'socket.io-client';
 import { useEffect, useState, useRef } from 'react';
 import { IncomingMessage, OutgoingMessage, SendMessage } from './components';
 import styles from './message.module.css';
 import { IMessage } from '../../../interfaces';
 import axios from '../../../utils/clientAxios.utility';
+import { removeAllLocalStorage } from '../../../utils/localStorage.utility';
+import { USUAL_MESSAGES } from '../../../utils/constants';
 
 interface Props {
   socket: React.MutableRefObject<Socket | null | undefined>;
@@ -58,8 +60,19 @@ export const Messages = ({ socket, recipientId, uid }: Props) => {
 
   useEffect(() => {
     if (socket?.current) {
-      socket?.current?.on('personal-message', (data: IMessage | object) => {
-        setPersonalMessages((oldMsgs) => [...oldMsgs, data]);
+      socket?.current?.on('personal-message', (data) => {
+        if (data?.data?.message) {
+          setPersonalMessages((oldMsgs) => [...oldMsgs, data?.data?.message]);
+          return;
+        }
+        if (data?.error) {
+          if (data?.error?.includes('TokenExpiredError')) {
+            removeAllLocalStorage();
+            window.location.href = '/';
+          } else {
+            message.warning(USUAL_MESSAGES.ERROR_SENDING_MESSAGE);
+          }
+        }
       });
     }
   }, [socket]);

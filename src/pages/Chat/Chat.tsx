@@ -6,7 +6,7 @@ import { Button } from 'antd';
 import styles from './chat.module.css';
 import { resetUser } from '../../redux/states/user';
 import { getSocket } from '../../utils/socket.utility';
-import { getLocalStorage } from '../../utils/localStorage.utility';
+import { getLocalStorage, removeAllLocalStorage } from '../../utils/localStorage.utility';
 import { NotSelectedChat, Messages } from '../../components/Chat';
 import type { IUser } from '../../interfaces';
 import Sidebar from '../../components/Chat/Sidebar/Sidebar';
@@ -35,23 +35,29 @@ const Chat = () => {
 
   useEffect(() => {
     if (socket?.current) {
-      socket?.current?.on('user-list', (data) => {
-        if (!data?.users) {
-          setUsers([]);
-        } else {
-          const chatUsers = data.users.filter(
+      socket?.current?.on('user-list', (res) => {
+        if (res?.data?.users) {
+          const chatUsers = res?.data?.users?.filter(
             (chatUser: IUser) => chatUser?.uid !== user.uid,
           );
           setUsers(chatUsers);
-          setLoadingUsers(false);
         }
+        if (res?.error) {
+          if (res?.error?.includes('TokenExpiredError')) {
+            removeAllLocalStorage();
+            window.location.href = '/';
+          } else {
+            setUsers([]);
+          }
+        }
+        setLoadingUsers(false);
       });
     }
   }, [socket, user]);
 
   const logOut = () => {
     if (socket.current) {
-      socket.current.emit('offline');
+      socket.current.emit('offline', user.uid);
     }
     dispatch(resetUser());
     dispatch(resetChat());
