@@ -5,6 +5,7 @@ import { createChat } from '../../../../redux/states/chat';
 import { IUser } from '../../../../interfaces';
 import styles from '../sidebar.module.css';
 import { AppStore } from '../../../../redux/store';
+import recipientUserImg from '../../../../assets/recipient_user.png';
 
 interface Props {
   user: IUser;
@@ -33,7 +34,7 @@ const SidebarChatItem = ({ user }: Props) => {
       <div className={styles.chatPeople}>
         <div className={styles.chatImg}>
           <img
-            src="https://ptetutorials.com/images/user-profile.png"
+            src={recipientUserImg}
             alt="sunil"
           />
         </div>

@@ -1,6 +1,7 @@
 import { Row, Col } from 'antd';
 import { Navbar } from '../../components/Navbar/Navbar';
 import styles from './home.module.css';
+import homePanel from '../../assets/homePanel.jpg';
 
 const Home = () => {
   return (
@@ -8,10 +9,12 @@ const Home = () => {
       <Navbar />
       <Row justify="center" align="middle">
         <Col xs={24} sm={12} className={styles.leftSide}>
-          <img
-            src="https://blog.index.pe/wp-content/uploads/2020/03/chat-720x320@2x.jpeg"
-            alt=""
-          />
+          <div className={styles.imgContainer}>
+            <img
+              src={homePanel}
+              alt="home-panel"
+            />
+          </div>
         </Col>
         <Col xs={24} sm={12} className={styles.rightSide}>
           <h2>Exprésate</h2>

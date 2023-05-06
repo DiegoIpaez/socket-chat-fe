@@ -69,7 +69,7 @@ const Chat = () => {
       <div className={styles.inboxPeopleContainer}>
         <div className={styles.inboxPeopleNav}>
           <div className={styles.recentHeading}>
-            <h4>Recientes</h4>
+            <h4>{!user?.username ? 'Recientes' : user?.username}</h4>
           </div>
           <div>
             <Button danger size="small" onClick={() => logOut()}>
