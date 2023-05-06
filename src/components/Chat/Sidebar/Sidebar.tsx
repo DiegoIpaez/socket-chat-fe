@@ -1,4 +1,3 @@
-/* eslint-disable react/self-closing-comp */
 import { Spin } from 'antd';
 import styles from './sidebar.module.css';
 import SidebarChatItem from './components/SidebarChatItem';
@@ -16,7 +15,7 @@ const Sidebar = ({ users, loadingUsers }: Props) => {
           <SidebarChatItem key={user.uid} user={user} />
         ))}
 
-        <div className={styles.extraSpace}></div>
+        <div className={styles.extraSpace} />
       </div>
     </Spin>
   );

@@ -8,10 +8,12 @@ const Home = () => {
       <Navbar />
       <Row justify="center" align="middle">
         <Col xs={24} sm={12} className={styles.leftSide}>
-          <img
-            src="https://blog.index.pe/wp-content/uploads/2020/03/chat-720x320@2x.jpeg"
-            alt=""
-          />
+          <div className={styles.imgContainer}>
+            <img
+              src="https://cdn.arstechnica.net/wp-content/uploads/2021/06/36-1-800x400.jpg"
+              alt=""
+            />
+          </div>
         </Col>
         <Col xs={24} sm={12} className={styles.rightSide}>
           <h2>Exprésate</h2>

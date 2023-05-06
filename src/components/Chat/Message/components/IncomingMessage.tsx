@@ -1,5 +1,6 @@
 import styles from '../message.module.css';
 import { IMessage } from '../../../../interfaces';
+import recipientUserImg from '../../../../assets/recipient_user.png';
 import { LOCALE_DATE } from '../../../../utils/constants';
 
 interface Props {
@@ -9,7 +10,7 @@ interface Props {
 export const IncomingMessage = ({ message }: Props) => (
   <div className={styles.incomingMsg}>
     <div className={styles.incomingMsgImg}>
-      <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil" />
+      <img src={recipientUserImg} alt="sunil" />
     </div>
     <div className={styles.receivedMsg}>
       <div className={styles.receivedWithMsg}>

@@ -1,9 +1,16 @@
 import { useState } from 'react';
 import { Row, Col, Space, Button } from 'antd';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import styles from './navbar.module.css';
 import { Login, Register } from '../Auth';
+import { AppStore } from '../../redux/store';
+import logo from '../../assets/logo.png';
 
 export const Navbar = () => {
+  const navigate = useNavigate();
+  const chatState = useSelector((store: AppStore) => store.user);
+
   const [openLogin, setOpenLogin] = useState(false);
   const [openRegister, setOpenRegister] = useState(false);
 
@@ -14,23 +21,24 @@ export const Navbar = () => {
     setOpenLogin(true);
   };
 
+  const handleInitOnClick = () => (!chatState?.uid
+    ? setOpenLogin(true)
+    : navigate('/chat'));
+
   return (
     <>
       <Row justify="space-between" align="middle" className={styles.navbar}>
         <Col>
           <div className={styles.logoContainer}>
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/2044px-WhatsApp.svg.png"
-              alt="WhatsApp Logo"
+              src={logo}
+              alt="nav-logo"
               className={styles.logo}
             />
           </div>
         </Col>
         <Col>
           <Space size="large">
-            <Button type="text" className={styles.link}>
-              Centro de ayuda
-            </Button>
             <Button
               type="text"
               onClick={() => setOpenRegister(true)}
@@ -40,10 +48,10 @@ export const Navbar = () => {
             </Button>
             <Button
               type="primary"
-              onClick={() => setOpenLogin(true)}
+              onClick={() => handleInitOnClick()}
               className={styles.chatLink}
             >
-              Iniciar
+              {!chatState?.uid ? 'Iniciar' : chatState?.username}
             </Button>
           </Space>
         </Col>
