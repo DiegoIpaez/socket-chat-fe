@@ -1,6 +1,7 @@
 import { Row, Col } from 'antd';
 import { Navbar } from '../../components/Navbar/Navbar';
 import styles from './home.module.css';
+import homePanel from '../../assets/homePanel.jpg';
 
 const Home = () => {
   return (
@@ -10,8 +11,8 @@ const Home = () => {
         <Col xs={24} sm={12} className={styles.leftSide}>
           <div className={styles.imgContainer}>
             <img
-              src="https://cdn.arstechnica.net/wp-content/uploads/2021/06/36-1-800x400.jpg"
-              alt=""
+              src={homePanel}
+              alt="home-panel"
             />
           </div>
         </Col>
