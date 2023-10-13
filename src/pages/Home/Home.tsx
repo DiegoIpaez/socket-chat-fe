@@ -1,7 +1,7 @@
 import { Row, Col } from 'antd';
-import { Navbar } from '../../components/Navbar/Navbar';
+import { Navbar } from '@/components/Navbar/Navbar';
+import homePanel from '@/assets/homePanel.jpg';
 import styles from './home.module.css';
-import homePanel from '../../assets/homePanel.jpg';
 
 const Home = () => {
   return (
