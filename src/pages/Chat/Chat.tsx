@@ -4,14 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'antd';
 import styles from './chat.module.css';
-import { resetUser } from '../../redux/states/user';
-import { getSocket } from '../../utils/socket.utility';
-import { getLocalStorage, removeAllLocalStorage } from '../../utils/localStorage.utility';
-import { NotSelectedChat, Messages } from '../../components/Chat';
-import type { IUser } from '../../interfaces';
-import Sidebar from '../../components/Chat/Sidebar/Sidebar';
-import { AppStore } from '../../redux/store';
-import { resetChat } from '../../redux/states/chat';
+import { resetUser } from '@/redux/states/user';
+import { getSocket } from '@/utils/socket.utility';
+import { getLocalStorage, removeAllLocalStorage } from '@/utils/localStorage.utility';
+import { NotSelectedChat, Messages } from '@/components/Chat';
+import type { IUser } from '@/interfaces';
+import Sidebar from '@/components/Chat/Sidebar/Sidebar';
+import { AppStore } from '@/redux/store';
+import { resetChat } from '@/redux/states/chat';
 
 const Chat = () => {
   const user = getLocalStorage('user');

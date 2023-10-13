@@ -1,13 +1,13 @@
 import { Provider } from 'react-redux';
 import { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import store from './redux/store';
-import AuthGuard from './utils/guards/auth.guard';
-import Loading from './components/Loading/Loading';
-import { ROUTE_PATHS } from './utils/constants';
+import store from '@/redux/store';
+import AuthGuard from '@/utils/guards/auth.guard';
+import Loading from '@/components/Loading/Loading';
+import { ROUTE_PATHS } from '@/utils/constants';
 
-const Home = lazy(() => import('./pages/Home/Home'));
-const Chat = lazy(() => import('./pages/Chat/Chat'));
+const Home = lazy(() => import('@/pages/Home/Home'));
+const Chat = lazy(() => import('@/pages/Chat/Chat'));
 
 const App = () => {
   return (

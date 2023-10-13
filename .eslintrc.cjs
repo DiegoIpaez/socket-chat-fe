@@ -33,6 +33,7 @@ module.exports = {
     'no-multi-spaces': ['error'],
     'linebreak-style': 'off',
     'import/prefer-default-export': 'off',
+    'import/extensions': 'off',
     'object-curly-newline': ['error', { multiline: true, consistent: true }],
     'react/no-unstable-nested-components': ['error', { allowAsProps: true }],
     'react/function-component-definition': [
