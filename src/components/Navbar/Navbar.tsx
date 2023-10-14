@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { Row, Col, Space, Button } from 'antd';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import styles from './navbar.module.css';
+import { useSelector } from 'react-redux';
+import { Row, Col, Space, Button } from 'antd';
 import { Login, Register } from '../Auth';
-import { AppStore } from '../../redux/store';
-import logo from '../../assets/logo.png';
+import { AppStore } from '@/redux/store';
+import logo from '@/assets/logo.png';
+import styles from './navbar.module.css';
 
 const MAX_LENGTH_OF_USERNAME = 5;
 
