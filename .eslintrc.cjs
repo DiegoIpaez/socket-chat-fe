@@ -10,7 +10,14 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
   ],
-  overrides: [],
+  overrides: [
+    {
+      files: ['*.tsx'],
+      rules: {
+        'arrow-body-style': 'off',
+      },
+    },
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
@@ -25,7 +32,10 @@ module.exports = {
     indent: ['error', 2],
     'no-multi-spaces': ['error'],
     'linebreak-style': 'off',
+    'import/prefer-default-export': 'off',
+    'import/extensions': 'off',
     'object-curly-newline': ['error', { multiline: true, consistent: true }],
+    'react/no-unstable-nested-components': ['error', { allowAsProps: true }],
     'react/function-component-definition': [
       'error',
       {

@@ -1,0 +1,32 @@
+.chatContainer {
+  display: flex;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.inboxPeopleContainer {
+  background: #303030 none repeat scroll 0 0;
+  flex-basis: 35%;
+  flex-grow: 0;
+}
+
+.inboxPeopleNav {
+  display: flex;
+  background-color: #128c7e;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  padding: 10px 10px 10px 10px;
+  overflow: hidden;
+}
+
+.recentHeading h4 {
+  color: #e7e7f1;
+  font-size: 16px;
+  font-weight: 400;
+  margin: auto;
+}
+
+.logoutBtn:hover {
+  color: rgba(184, 0, 0, 0.839);
+}
