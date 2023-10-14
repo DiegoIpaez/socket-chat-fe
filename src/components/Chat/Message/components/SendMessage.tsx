@@ -1,5 +1,6 @@
 import { Row, Col, Button, Form, Input } from 'antd';
 import { useSelector } from 'react-redux';
+import { SendOutlined } from '@ant-design/icons';
 import styles from '../message.module.css';
 import { AppStore } from '../../../../redux/store';
 import { getLocalStorage } from '../../../../utils/localStorage.utility';
@@ -43,7 +44,7 @@ export const SendMessage = ({ sendPersonalMessage }: Props) => {
         </Col>
         <Col>
           <Button className={styles.msgSendBtn} htmlType="submit">
-            enviar
+            <SendOutlined />
           </Button>
         </Col>
       </Row>

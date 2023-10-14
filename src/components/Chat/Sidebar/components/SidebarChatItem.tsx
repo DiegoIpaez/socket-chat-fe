@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useDispatch, useSelector } from 'react-redux';
-import { createChat } from '../../../../redux/states/chat';
-import { IUser } from '../../../../interfaces';
+import { IUser } from '@/interfaces';
+import { AppStore } from '@/redux/store';
+import { createChat } from '@/redux/states/chat';
+import recipientUserImg from '@/assets/recipient_user.png';
 import styles from '../sidebar.module.css';
-import { AppStore } from '../../../../redux/store';
-import recipientUserImg from '../../../../assets/recipient_user.png';
 
 interface Props {
   user: IUser;

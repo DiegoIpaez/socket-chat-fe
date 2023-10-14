@@ -21,7 +21,12 @@
 }
 
 .recentHeading h4 {
-  color: white;
-  font-size: 18px;
+  color: #e7e7f1;
+  font-size: 16px;
+  font-weight: 400;
   margin: auto;
+}
+
+.logoutBtn:hover {
+  color: rgba(184, 0, 0, 0.839);
 }

@@ -13,7 +13,7 @@
   width: 5px;
 }
 .msgHistory::-webkit-scrollbar-thumb {
-  background-color:  #8888882c;
+  background-color: #8888882c;
   border-radius: 7px;
 }
 
@@ -92,19 +92,20 @@
 .msgSendBtn {
   background: #128c7e none repeat scroll 0 0;
   color: #f2f2f2;
+  border: 1px solid transparent;
 }
 .msgSendBtn:focus {
   color: #f2f2f2 !important;
-  border: none;
+  border: 1px solid transparent;
 }
 .msgSendBtn:hover {
   transition: all ease 0.5s;
   background: #ffffff none repeat scroll 0 0 !important;
   color: #128c7e !important;
-  border-color: #128c7e !important;
+  border-color: transparent !important;
 }
 
-.incomingMsg{
+.incomingMsg {
   margin: 26px 0px;
 }
 
