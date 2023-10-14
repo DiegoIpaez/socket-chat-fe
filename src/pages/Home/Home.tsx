@@ -1,19 +1,17 @@
 import { Row, Col } from 'antd';
 import { Navbar } from '@/components/Navbar/Navbar';
+import Footer from '@/components/Footer/Footer';
 import homePanel from '@/assets/homePanel.jpg';
 import styles from './home.module.css';
 
 const Home = () => {
   return (
-    <>
+    <div className={styles.container}>
       <Navbar />
       <Row justify="center" align="middle">
         <Col xs={24} sm={12} className={styles.leftSide}>
           <div className={styles.imgContainer}>
-            <img
-              src={homePanel}
-              alt="home-panel"
-            />
+            <img src={homePanel} alt="home-panel" />
           </div>
         </Col>
         <Col xs={24} sm={12} className={styles.rightSide}>
@@ -25,7 +23,8 @@ const Home = () => {
           </p>
         </Col>
       </Row>
-    </>
+      <Footer />
+    </div>
   );
 };
 
