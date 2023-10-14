@@ -1,17 +1,21 @@
 import { type Socket } from 'socket.io-client';
-import { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { Button } from 'antd';
-import styles from './chat.module.css';
-import { resetUser } from '@/redux/states/user';
-import { getSocket } from '@/utils/socket.utility';
-import { getLocalStorage, removeAllLocalStorage } from '@/utils/localStorage.utility';
-import { NotSelectedChat, Messages } from '@/components/Chat';
+import { Tooltip } from 'antd';
+import { LogoutOutlined } from '@ant-design/icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useRef, useState } from 'react';
 import type { IUser } from '@/interfaces';
-import Sidebar from '@/components/Chat/Sidebar/Sidebar';
 import { AppStore } from '@/redux/store';
+import { resetUser } from '@/redux/states/user';
 import { resetChat } from '@/redux/states/chat';
+import { getSocket } from '@/utils/socket.utility';
+import {
+  getLocalStorage,
+  removeAllLocalStorage,
+} from '@/utils/localStorage.utility';
+import Sidebar from '@/components/Chat/Sidebar/Sidebar';
+import { NotSelectedChat, Messages } from '@/components/Chat';
+import styles from './chat.module.css';
 
 const Chat = () => {
   const user = getLocalStorage('user');
@@ -72,15 +76,19 @@ const Chat = () => {
             <h4>{!user?.username ? 'Recientes' : user?.username}</h4>
           </div>
           <div>
-            <Button danger size="small" onClick={() => logOut()}>
-              Salir
-            </Button>
+            <Tooltip placement="left" title="Cerrar sesión">
+              <LogoutOutlined className={styles.logoutBtn} onClick={logOut} />
+            </Tooltip>
           </div>
         </div>
         <Sidebar users={users} loadingUsers={loadingUsers} />
       </div>
       {chatState.activeChat && chatState.recipientId ? (
-        <Messages socket={socket} uid={user.uid} recipientId={chatState.recipientId} />
+        <Messages
+          socket={socket}
+          uid={user.uid}
+          recipientId={chatState.recipientId}
+        />
       ) : (
         <NotSelectedChat />
       )}
