@@ -7,12 +7,22 @@ import { Login, Register } from '../Auth';
 import { AppStore } from '../../redux/store';
 import logo from '../../assets/logo.png';
 
+const MAX_LENGTH_OF_USERNAME = 5;
+
 export const Navbar = () => {
   const navigate = useNavigate();
   const chatState = useSelector((store: AppStore) => store.user);
 
   const [openLogin, setOpenLogin] = useState(false);
   const [openRegister, setOpenRegister] = useState(false);
+
+  const getUserName = () => {
+    const username = chatState?.username ?? '';
+    if (username?.length > MAX_LENGTH_OF_USERNAME) {
+      return `${username.substring(0, MAX_LENGTH_OF_USERNAME)}...`;
+    }
+    return username;
+  };
 
   const closeLoginModal = () => setOpenLogin(false);
   const closeRegisterModal = () => setOpenRegister(false);
@@ -51,7 +61,7 @@ export const Navbar = () => {
               onClick={() => handleInitOnClick()}
               className={styles.chatLink}
             >
-              {!chatState?.uid ? 'Iniciar' : chatState?.username}
+              {!chatState?.uid ? 'Iniciar' : getUserName()}
             </Button>
           </Space>
         </Col>
