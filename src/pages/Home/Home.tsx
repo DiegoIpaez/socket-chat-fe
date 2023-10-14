@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <Navbar />
-      <Row justify="center" align="middle">
+      <Row className={styles.rowContainer} justify="center" align="middle">
         <Col xs={24} sm={12} className={styles.leftSide}>
           <div className={styles.imgContainer}>
             <img src={homePanel} alt="home-panel" />
